@@ -13,7 +13,7 @@ alias dkcd="dkdc"
 # dkdc
 alias dk="dkdc"
 alias dc="dkdc"
-# alias dkdc-io="cd ~/code/dkdc-io"
+alias dkdcio="cd ~/code/dkdc-io"
 
 # time savers 
 # alias vim="nvim"
