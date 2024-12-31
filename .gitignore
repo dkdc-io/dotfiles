@@ -1,0 +1,60 @@
+# mac
+.DS_STORE
+
+great-tables
+
+# vim
+*.swp
+
+# vscode
+.vscode
+
+# .env
+.env
+
+# venvs
+venv
+venvs
+.venv
+.venvs
+
+
+# tmp
+.tmp
+tmp
+data
+*.csv*
+*.ddb*
+*.parquet
+
+# python
+.ipynb_checkpoints
+.ruff_cache
+
+# personal conventions
+out.txt
+out.csv
+out.json
+out2.json
+out3.json
+out4.json
+temp/
+temp.py
+temp.txt
+temp.ipynb
+temp.md
+
+eda.ipynb
+untitled.ipynb
+
+# dbt
+target/
+dbt_packages/
+
+# logs
+logs
+*snowsql*log*
+
+# zuliprc
+*zuliprc*
+
