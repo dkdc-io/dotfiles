@@ -1,0 +1,48 @@
+[open.aliases]
+i = "ibis"
+z = "zulip"
+s = "search"
+e = "email"
+c = "cal"
+d = "drive"
+g = "github"
+y = "youtube"
+gh = "github"
+ym = "youtubemusic"
+io = "dkdcio"
+key = "keyboard"
+read = "kindle"
+music = "youtubemusic"
+cloud = "hetzner"
+
+[open.things]
+# websites
+cal = "https://calendar.google.com"
+ibis = "https://ibis-project.org"
+dkdc = "https://dkdc.dev"
+dkdcio = "https://dkdc.io"
+chat = "https://claude.ai"
+drive = "https://drive.google.com"
+email = "https://mail.google.com"
+search = "https://google.com"
+github = "https://github.com"
+keyboard = "https://configure.zsa.io/moonlander"
+youtube = "https://youtube.com"
+youtubemusic = "https://music.youtube.com"
+
+kindle = "https://read.amazon.com"
+audible = "https://audible.com"
+
+##cloud
+md = "https://app.motherduck.com"
+gcp = "https://console.cloud.google.com"
+azure = "https://portal.azure.com"
+posit = "https://connect.posit.cloud"
+openai = "https://platform.openai.com/docs/overview"
+claude = "https://claude.ai"
+hetzner = "https://konsoleh.hetzner.com"
+
+## apps
+edge = "/Applications/Microsoft Edge.app"
+zulip = "/Applications/Zulip.app"
+spotify = "/Applications/Spotify.app"
