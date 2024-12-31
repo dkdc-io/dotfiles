@@ -2,10 +2,7 @@
 #export PATH="/usr/bin:$PATH" # ???
 
 # fine
-# export EDITOR="nvim"
-
-# vscode annoyance (TODO: remove?)
-alias exit="exit 0"
+export EDITOR="nvim"
 
 # common typo
 alias dkcd="dkdc"
@@ -16,8 +13,9 @@ alias dc="dkdc"
 alias dkdcio="cd ~/code/dkdc-io"
 
 # time savers 
-# alias vim="nvim"
-alias v="vi"
+#alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
 alias m="tmux"
 alias l="less"
 alias tree="tree -I venv -I .git"
@@ -41,7 +39,7 @@ alias gpf="git push --force"
 alias gl="git log"
 alias gr="git rebase -i origin/main"
 alias diff="git diff --color-words --no-index"
-alias grep="rg"
+#alias grep="rg"
 alias top="btop"
 
 # navigation
@@ -53,9 +51,9 @@ alias ....="cd ../../.."
 alias ali="v ~/.bash_aliases"
 alias update="source ~/.bashrc && git config --global core.excludesfile ~/.gitignore"
 alias gitignore="v ~/.gitignore"
-alias vimrc="v ~/.config/nvim/init.vim" # TODO
+alias vimrc="v ~/.config/nvim/init.lua"
 alias tmuxc="v ~/.tmux.conf"
-alias ipyrc="v ~/.ipython/profile_default/ipython_config.py" # TODO
+alias ipyrc="v ~/.ipython/profile_default/ipython_config.py"
 
 # make life easier 
 alias du="du -h -d1"
