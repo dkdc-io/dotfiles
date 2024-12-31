@@ -1,0 +1,93 @@
+# export PATH
+#export PATH="/usr/bin:$PATH" # ???
+
+# fine
+# export EDITOR="nvim"
+
+# vscode annoyance (TODO: remove?)
+alias exit="exit 0"
+
+# common typo
+alias dkcd="dkdc"
+
+# dkdc
+alias dk="dkdc"
+alias dc="dkdc"
+# alias dkdc-io="cd ~/code/dkdc-io"
+
+# time savers 
+# alias vim="nvim"
+alias v="vim"
+alias vi="v"
+alias m="tmux"
+alias l="less"
+alias tree="tree -I venv -I .git"
+alias t="tree -FC"
+alias tl="tree -L 1 -FC"
+alias tt="tree -L 2 -FC"
+alias ttt="tree -L 3 -FC"
+alias ls="ls -1phG -a"
+alias lsl="ls -l"
+alias gs="git status"
+alias gl="git log"
+alias gn="git checkout -b" 
+alias gb="git branch" 
+alias ga="git add ."
+alias gA="git add -A"
+alias qs="git add . && git commit -m 'qs'"
+alias ss="qs"
+alias gc="git commit -m"
+alias gp="git push"
+alias gpf="git push --force"
+alias gl="git log"
+alias gr="git rebase -i origin/main"
+alias diff="git diff --color-words --no-index"
+alias grep="rg"
+alias top="btop"
+
+# navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# quick mafs 
+alias ali="v ~/.zprofile"
+alias update="source ~/.zprofile && git config --global core.excludesfile ~/.gitignore"
+alias gitignore="v ~/.gitignore"
+alias vimrc="v ~/.config/nvim/init.vim" # TODO
+alias tmuxc="v ~/.tmux.conf"
+alias ipyrc="v ~/.ipython/profile_default/ipython_config.py" # TODO
+
+# make life easier 
+alias du="du -h -d1"
+alias loc="scc"
+alias find="find . -name"
+alias glow="glow -p"
+
+# work
+alias todo="v ~/code/dkdc-io/files/todo.md"
+alias notes="v ~/code/dkdc-io/files/notes.md"
+
+# etc
+alias temp="v temp.md"
+
+# python stuff
+#alias python="python3"
+#alias pip="pip3"
+alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias ipy="ipython"
+alias eda="ipy -i eda.py"
+
+#alias di="pip install --upgrade neovim ipython ipykernel nbformat pip"
+alias di="uv pip install --upgrade neovim ipython ipykernel nbformat pip"
+alias dr="pip install --upgrade -r requirements.txt"
+
+alias wp="which python"
+alias wp3="which python3"
+
+alias venv="python -m venv"
+alias on=". .venv/bin/activate"
+alias off="deactivate"
+
+export PYTHONDONTWRITEBYTECODE=1
+
