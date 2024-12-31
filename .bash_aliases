@@ -26,7 +26,7 @@ alias t="tree -FC"
 alias tl="tree -L 1 -FC"
 alias tt="tree -L 2 -FC"
 alias ttt="tree -L 3 -FC"
-alias ls="ls -1phG -a"
+alias ls='ls -1AhFX --group-directories-first --color=auto'
 alias lsl="ls -l"
 alias gs="git status"
 alias gl="git log"
@@ -51,8 +51,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # quick mafs 
-alias ali="v ~/.zprofile"
-alias update="source ~/.zprofile && git config --global core.excludesfile ~/.gitignore"
+alias ali="v ~/.bashrc"
+alias update="source ~/.bashrc && git config --global core.excludesfile ~/.gitignore"
 alias gitignore="v ~/.gitignore"
 alias vimrc="v ~/.config/nvim/init.vim" # TODO
 alias tmuxc="v ~/.tmux.conf"
