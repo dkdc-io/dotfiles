@@ -17,8 +17,7 @@ alias dkdcio="cd ~/code/dkdc-io"
 
 # time savers 
 # alias vim="nvim"
-alias v="vim"
-alias vi="v"
+alias v="vi"
 alias m="tmux"
 alias l="less"
 alias tree="tree -I venv -I .git"
@@ -51,7 +50,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # quick mafs 
-alias ali="v ~/.bashrc"
+alias ali="v ~/.bash_aliases"
 alias update="source ~/.bashrc && git config --global core.excludesfile ~/.gitignore"
 alias gitignore="v ~/.gitignore"
 alias vimrc="v ~/.config/nvim/init.vim" # TODO
