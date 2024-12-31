@@ -77,9 +77,7 @@ alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_inst
 alias ipy="ipython"
 alias eda="ipy -i eda.py"
 
-#alias di="pip install --upgrade neovim ipython ipykernel nbformat pip"
 alias di="uv pip install --upgrade neovim ipython ipykernel nbformat pip"
-alias dr="pip install --upgrade -r requirements.txt"
 
 alias wp="which python"
 alias wp3="which python3"
