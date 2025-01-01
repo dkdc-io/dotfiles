@@ -78,3 +78,8 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.cmd[[colorscheme tokyonight]]
 
+-- typos
+vim.cmd("command! W w")
+vim.cmd("command! Wq wq")
+vim.cmd("command! WQ wq")
+
