@@ -62,6 +62,8 @@ alias find="find . -name"
 alias glow="glow -p"
 
 # work
+alias files="cd ~/code/dkdc-io/files"
+alias drafts="cd ~/code/dkdc-io/files/drafts"
 alias todo="v ~/code/dkdc-io/files/todo.md"
 alias notes="v ~/code/dkdc-io/files/notes.md"
 
