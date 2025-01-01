@@ -60,8 +60,10 @@ alias du="du -h -d1"
 alias loc="scc"
 alias find="find . -name"
 alias glow="glow -p"
+alias preview="glow"
 
 # work
+alias dotfiles="cd ~/code/dkdc-io/dotfiles"
 alias files="cd ~/code/dkdc-io/files"
 alias drafts="cd ~/code/dkdc-io/files/drafts"
 alias todo="v ~/code/dkdc-io/files/todo.md"
