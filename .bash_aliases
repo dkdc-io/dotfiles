@@ -65,6 +65,7 @@ alias preview="glow"
 # work
 alias dotfiles="cd ~/code/dkdc-io/dotfiles"
 alias files="cd ~/code/dkdc-io/files"
+alias pfiles="cd ~/code/dkdc-io/public_files"
 alias drafts="cd ~/code/dkdc-io/files/drafts"
 alias todo="v ~/code/dkdc-io/files/todo.md"
 alias notes="v ~/code/dkdc-io/files/notes.md"
