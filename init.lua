@@ -83,3 +83,5 @@ vim.cmd("command! W w")
 vim.cmd("command! Wq wq")
 vim.cmd("command! WQ wq")
 
+-- macos clipboard
+vim.opt.clipboard = 'unnamedplus'
