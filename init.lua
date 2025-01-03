@@ -82,6 +82,7 @@ vim.cmd[[colorscheme tokyonight]]
 vim.cmd("command! W w")
 vim.cmd("command! Wq wq")
 vim.cmd("command! WQ wq")
+vim.cmd("command! Q q")
 
 -- macos clipboard
 vim.opt.clipboard = 'unnamedplus'
