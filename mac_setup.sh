@@ -10,5 +10,7 @@ brew install \
     scc \
     node \ # ew
     yarn \ # ew
+    tmux \
     nvim
 
+# TODO: copy over dotfiles and whatnot
