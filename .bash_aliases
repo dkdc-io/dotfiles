@@ -1,6 +1,18 @@
 # export PATH
 #export PATH="/usr/bin:$PATH" # ???
 
+#export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH" # code
+#export PATH="/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin:$PATH" # code
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH" # homebrew stuff # TODO: linux?
+
+export PATH="$HOME/go/bin:$PATH" # go stuff
+export PATH="$HOME/.cargo/bin:$PATH" # rust stuff
+
+# export other stuff
+export OLLAMA_HOME="$HOME/.ollama"
+
 # fine
 export EDITOR="nvim"
 
@@ -42,7 +54,7 @@ alias gpf="git push --force"
 alias gl="git log"
 alias gr="git rebase -i origin/main"
 alias diff="git diff --color-words --no-index"
-#alias grep="rg"
+alias grep="rg"
 alias top="btop"
 
 # navigation
