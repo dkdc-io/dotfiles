@@ -110,7 +110,6 @@ gitfucked() {
 
     git update-ref -d HEAD && git add -A && git commit -m "initial commit" && git push --force
     echo "repository '$repo_name' has been reset"
- 
 }
 
 export PYTHONDONTWRITEBYTECODE=1
