@@ -134,9 +134,7 @@ gitfucked() {
 
 # draw
 function excalidraw() {
-    echo "Starting in directory: $(pwd)"
-    (cd ~/code/excalidraw && echo "Inside subshell directory: $(pwd)" && yarn start)
-    echo "Ended in directory: $(pwd)"
+    (cd ~/code/excalidraw && yarn start)
 }
 alias draw="excalidraw"
 
