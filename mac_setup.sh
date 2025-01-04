@@ -14,6 +14,8 @@ brew install \
     ripgrep \
     glow \
     scc \
+    go \
+    rust \
     node \ # ew # NOTE: might actually need node@22 :/
     yarn \ # ew
     just \
