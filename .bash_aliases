@@ -88,7 +88,7 @@ alias di="uv pip install --upgrade neovim ipython ipykernel nbformat pip"
 alias wp="which python"
 alias wp3="which python3"
 
-alias venv="python -m venv"
+alias venv="uv venv"
 alias on=". .venv/bin/activate"
 alias off="deactivate"
 
