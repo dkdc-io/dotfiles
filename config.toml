@@ -16,6 +16,10 @@ chat = "claude"
 music = "youtubemusic"
 cloud = "hetzner"
 
+## work
+a = "ascend"
+docs = "ascenddocs"
+
 [open.things]
 # websites
 cal = "https://calendar.google.com"
@@ -43,3 +47,8 @@ hetzner = "https://konsoleh.hetzner.com"
 ## apps
 edge = "/Applications/Microsoft Edge.app"
 zulip = "/Applications/Zulip.app"
+
+## work
+ascend = "https://ascend.io"
+ascenddocs = "https://docs.ascend.io"
+
