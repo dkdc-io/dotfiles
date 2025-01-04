@@ -27,6 +27,10 @@ alias dkdcio="cd ~/code/dkdc-io"
 # ascend
 alias ascendio="cd ~/code/ascend-io"
 
+# draw
+alias excalidraw="cd ~/code/excalidraw && yarn start"
+alias daw="excalidraw"
+
 # time savers 
 #alias vim="nvim"
 alias vi="nvim"
