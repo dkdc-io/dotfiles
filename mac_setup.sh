@@ -8,8 +8,9 @@ brew install \
     ripgrep \
     glow \
     scc \
-    node \ # ew
+    node \ # ew # NOTE: might actually need node@22 :/
     yarn \ # ew
+    just \
     tmux \
     nvim
 
