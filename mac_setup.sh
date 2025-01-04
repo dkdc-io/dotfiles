@@ -14,6 +14,7 @@ brew install \
     ripgrep \
     glow \
     scc \
+    btop \
     go \
     rust \
     node \ # ew # NOTE: might actually need node@22 :/
