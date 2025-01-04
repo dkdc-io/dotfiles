@@ -16,6 +16,7 @@ require('lspconfig').pyright.setup{
                 typeCheckingMode = "off",
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
+                extraPaths = { ".venv/lib/python3.*/site-packages" },
                 diagnosticMode = "off",
                 autoImportCompletions = false,
             },
