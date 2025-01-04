@@ -76,6 +76,7 @@ alias loc="scc"
 alias find="find . -name"
 alias glow="glow -p"
 alias preview="glow"
+alias p="glow"
 
 # work
 alias dotfiles="cd ~/code/dkdc-io/dotfiles"

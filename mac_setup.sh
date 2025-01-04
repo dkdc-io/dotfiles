@@ -6,6 +6,8 @@ brew install \
     tree \
     gh \
     ripgrep \
+    glow \
+    scc \
     node \ # ew
     yarn \ # ew
     nvim
