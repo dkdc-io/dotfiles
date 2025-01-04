@@ -15,6 +15,7 @@ read = "kindle"
 chat = "claude"
 music = "youtubemusic"
 cloud = "hetzner"
+router = "mobilerouter"
 
 ## work
 a = "ascend"
