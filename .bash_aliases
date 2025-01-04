@@ -1,4 +1,5 @@
-# export PATH
+# exports
+
 #export PATH="/usr/bin:$PATH" # ???
 
 #export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH" # code
@@ -11,6 +12,7 @@ export PATH="$HOME/go/bin:$PATH" # go stuff
 export PATH="$HOME/.cargo/bin:$PATH" # rust stuff
 
 # export other stuff
+export PYTHONDONTWRITEBYTECODE=1
 export OLLAMA_HOME="$HOME/.ollama"
 
 # fine
@@ -109,6 +111,7 @@ alias venv="uv venv"
 alias on=". .venv/bin/activate"
 alias off="deactivate"
 
+# gitfucked
 gitfucked() {
     repo_name=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
     if [ -z "$repo_name" ]; then
@@ -129,5 +132,11 @@ gitfucked() {
     echo "repository '$repo_name' has been reset"
 }
 
-export PYTHONDONTWRITEBYTECODE=1
+# draw
+function excalidraw() {
+    echo "Starting in directory: $(pwd)"
+    (cd ~/code/excalidraw && echo "Inside subshell directory: $(pwd)" && yarn start)
+    echo "Ended in directory: $(pwd)"
+}
+alias draw="excalidraw"
 
