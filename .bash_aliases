@@ -12,6 +12,9 @@ alias dk="dkdc"
 alias dc="dkdc"
 alias dkdcio="cd ~/code/dkdc-io"
 
+# ascend
+alias ascendio="cd ~/code/ascend-io"
+
 # time savers 
 #alias vim="nvim"
 alias vi="nvim"
@@ -88,6 +91,27 @@ alias wp3="which python3"
 alias venv="python -m venv"
 alias on=". .venv/bin/activate"
 alias off="deactivate"
+
+gitfucked() {
+    repo_name=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
+    if [ -z "$repo_name" ]; then
+        echo "not in a git repository"
+        return 1
+    fi
+
+    for i in {1..3}; do
+        echo -n "are you sure you want to nuke the repo '$repo_name' at $(pwd)? [Y/N] "
+        read response
+        if [[ ! "$response" =~ ^[Y]$ ]]; then
+            echo "operation cancelled"
+            return 1
+        fi
+    done
+
+    git update-ref -d HEAD && git add -A && git commit -m "initial commit" && git push --force
+    echo "repository '$repo_name' has been reset"
+ 
+}
 
 export PYTHONDONTWRITEBYTECODE=1
 
