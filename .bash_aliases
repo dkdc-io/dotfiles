@@ -29,7 +29,7 @@ alias ascendio="cd ~/code/ascend-io"
 
 # draw
 alias excalidraw="cd ~/code/excalidraw && yarn start"
-alias daw="excalidraw"
+alias draw="excalidraw"
 
 # time savers 
 #alias vim="nvim"
