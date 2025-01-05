@@ -35,8 +35,9 @@ alias draw="excalidraw"
 
 # time savers 
 #alias vim="nvim"
-alias vi="nvim"
 alias v="nvim"
+alias vt='v -c "T"'
+alias vi="nvim"
 alias m="tmux"
 alias l="less"
 alias tree="tree -I venv -I .git"
