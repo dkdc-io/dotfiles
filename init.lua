@@ -1,3 +1,24 @@
+-- options
+-- vim.cmd('syntax on')
+vim.opt.number = true
+--vim.opt.relativenumber = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+
+-- colorscheme
+vim.cmd[[colorscheme tokyonight]]
+
+-- typos
+vim.cmd("command! W w")
+vim.cmd("command! Wq wq")
+vim.cmd("command! WQ wq")
+vim.cmd("command! Q q")
+
+-- macos clipboard
+vim.opt.clipboard = 'unnamedplus'
+
 -- python
 require('lspconfig').ruff.setup {
   trace = 'messages',
@@ -69,6 +90,7 @@ require("nvim-tree").setup({
 vim.api.nvim_create_user_command('T', 'NvimTreeOpen', {})
 vim.api.nvim_create_user_command('Tree', 'NvimTreeOpen', {})
 vim.api.nvim_create_user_command('TreeOpen', 'NvimTreeOpen', {})
+vim.api.nvim_create_user_command('TC', 'NvimTreeClose', {})
 vim.api.nvim_create_user_command('TreeClose', 'NvimTreeClose', {})
 
 -- quarto
@@ -95,22 +117,3 @@ require('quarto').setup{
     never_run = { 'yaml' }, -- filetypes which are never sent to a code runner
   },
 }
-
--- viz
--- vim.cmd('syntax on')
-vim.opt.number = true
---vim.opt.relativenumber = true
-vim.opt.expandtab = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.cmd[[colorscheme tokyonight]]
-
--- typos
-vim.cmd("command! W w")
-vim.cmd("command! Wq wq")
-vim.cmd("command! WQ wq")
-vim.cmd("command! Q q")
-
--- macos clipboard
-vim.opt.clipboard = 'unnamedplus'
