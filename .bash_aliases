@@ -83,9 +83,9 @@ alias ....="cd ../../.."
 alias ali="v ~/.bash_aliases"
 update() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        source ~/.zprofile
+        . ~/.zprofile
     else
-        source ~/.bashrc
+        . ~/.bashrc
     fi
     git config --global core.excludesfile ~/.gitignore
 }
