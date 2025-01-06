@@ -176,7 +176,7 @@ vim.api.nvim_create_autocmd(
     }
 )
 
--- Lua configuration
+-- Lua
 require('lspconfig').lua_ls.setup {
     capabilities = vim.lsp.protocol.make_client_capabilities(),
     settings = {
