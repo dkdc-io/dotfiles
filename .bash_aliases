@@ -29,10 +29,6 @@ alias dkdcio="cd ~/code/dkdc-io"
 # ascend
 alias ascendio="cd ~/code/ascend-io"
 
-# draw
-alias excalidraw="cd ~/code/excalidraw && yarn start"
-alias draw="excalidraw"
-
 # time savers 
 #alias vim="nvim"
 alias v="nvim"
@@ -64,6 +60,13 @@ alias diff="git diff --color-words --no-index"
 alias grep="rg"
 alias g="grep"
 alias top="btop"
+alias du="du -h -d1"
+alias loc="scc"
+alias find="find . -name"
+alias f="find"
+alias glow="glow -p"
+alias preview="glow"
+alias p="glow"
 
 # navigation
 alias ..="cd .."
@@ -72,20 +75,18 @@ alias ....="cd ../../.."
 
 # quick mafs 
 alias ali="v ~/.bash_aliases"
-alias update="source ~/.bashrc && git config --global core.excludesfile ~/.gitignore"
+update() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        source ~/.zprofile
+    else
+        source ~/.bashrc
+    fi
+    git config --global core.excludesfile ~/.gitignore
+}
 alias gitignore="v ~/.gitignore"
 alias vimrc="v ~/.config/nvim/init.lua"
 alias tmuxc="v ~/.tmux.conf"
 alias ipyrc="v ~/.ipython/profile_default/ipython_config.py"
-
-# make life easier 
-alias du="du -h -d1"
-alias loc="scc"
-alias find="find . -name"
-alias f="find"
-alias glow="glow -p"
-alias preview="glow"
-alias p="glow"
 
 # work
 alias dotfiles="cd ~/code/dkdc-io/dotfiles"
