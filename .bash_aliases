@@ -41,7 +41,13 @@ alias t="tree -FC"
 alias tl="tree -L 1 -FC"
 alias tt="tree -L 2 -FC"
 alias ttt="tree -L 3 -FC"
-alias ls='ls -1AhFX --group-directories-first --color=auto'
+ls() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        command ls -1GhFAtr "$@"
+    else
+        command ls -1 --color=auto -hFAtr "$@"
+    fi
+}
 alias lsl="ls -l"
 alias gs="git status"
 alias gl="git log"

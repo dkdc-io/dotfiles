@@ -1,14 +1,12 @@
 -- options
--- vim.cmd('syntax on')
 vim.opt.number = true
---vim.opt.relativenumber = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- colorscheme
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight]]
 
 -- typos
 vim.cmd("command! W w")
@@ -19,17 +17,73 @@ vim.cmd("command! Q q")
 -- macos clipboard
 vim.opt.clipboard = 'unnamedplus'
 
--- python
-require('lspconfig').ruff.setup {
-  trace = 'messages',
-  init_options = {
-    settings = {
-      logLevel = 'debug',
-    }
-  }
+-- tree
+require("nvim-tree").setup({
+    sort = {
+        sorter = "case_sensitive",
+    },
+    view = {
+        width = 30,
+    },
+    renderer = {
+        group_empty = true,
+    },
+    filters = {
+        dotfiles = true,
+    },
+})
+
+vim.api.nvim_create_user_command('T', 'NvimTreeOpen', {})
+vim.api.nvim_create_user_command('Tree', 'NvimTreeOpen', {})
+vim.api.nvim_create_user_command('TreeOpen', 'NvimTreeOpen', {})
+vim.api.nvim_create_user_command('TC', 'NvimTreeClose', {})
+vim.api.nvim_create_user_command('TreeClose', 'NvimTreeClose', {})
+
+-- keymaps
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })
+vim.keymap.set('n', '<C-o>', '<C-o>', { noremap = true, silent = true })
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { noremap = true, silent = true })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { noremap = true, silent = true })
+
+-- augroups
+vim.api.nvim_create_augroup("AutoFormat", {})
+
+-- quarto
+require('quarto').setup {
+    debug = true,
+    closePreviewOnExit = true,
+    lspFeatures = {
+        enabled = true,
+        chunks = "curly",
+        languages = { "python", "bash", "html" },
+        diagnostics = {
+            enabled = true,
+            triggers = { "BufWritePost" },
+        },
+        completion = {
+            enabled = true,
+        },
+    },
+    codeRunner = {
+        enabled = true,
+        default_method = "molten", -- "molten", "slime", "iron" or <function>
+        ft_runners = {},           -- filetype to runner, ie. `{ python = "molten" }`.
+        -- Takes precedence over `default_method`
+        never_run = { 'yaml' },    -- filetypes which are never sent to a code runner
+    },
 }
 
-require('lspconfig').pyright.setup{
+-- Python
+require('lspconfig').ruff.setup {
+    trace = 'messages',
+    init_options = {
+        settings = {
+            logLevel = 'debug',
+        }
+    }
+}
+
+require('lspconfig').pyright.setup {
     capabilities = vim.lsp.protocol.make_client_capabilities(),
     settings = {
         python = {
@@ -52,68 +106,120 @@ require('lspconfig').pyright.setup{
     }
 }
 
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true })
-vim.keymap.set('n', '<C-o>', '<C-o>', { noremap = true, silent = true })
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, { noremap = true, silent = true })
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, { noremap = true, silent = true })
-
-vim.api.nvim_create_augroup("AutoFormat", {})
-
 vim.api.nvim_create_autocmd(
     "BufWritePost",
     {
         pattern = "*.py",
         group = "AutoFormat",
         callback = function()
-            vim.cmd("silent !ruff format %")            
+            vim.cmd("silent !ruff format %")
             vim.cmd("edit")
         end,
     }
 )
 
--- tree
-require("nvim-tree").setup({
-  sort = {
-    sorter = "case_sensitive",
-  },
-  view = {
-    width = 30,
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
-
-vim.api.nvim_create_user_command('T', 'NvimTreeOpen', {})
-vim.api.nvim_create_user_command('Tree', 'NvimTreeOpen', {})
-vim.api.nvim_create_user_command('TreeOpen', 'NvimTreeOpen', {})
-vim.api.nvim_create_user_command('TC', 'NvimTreeClose', {})
-vim.api.nvim_create_user_command('TreeClose', 'NvimTreeClose', {})
-
--- quarto
-require('quarto').setup{
-  debug = true,
-  closePreviewOnExit = true,
-  lspFeatures = {
-    enabled = true,
-    chunks = "curly",
-    languages = { "python", "bash", "html" },
-    diagnostics = {
-      enabled = true,
-      triggers = { "BufWritePost" },
+-- Go
+require('lspconfig').gopls.setup {
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true, -- Optional: set to true if you prefer gofumpt
+        },
     },
-    completion = {
-      enabled = true,
-    },
-  },
-  codeRunner = {
-    enabled = true,
-    default_method = "molten", -- "molten", "slime", "iron" or <function>
-    ft_runners = {}, -- filetype to runner, ie. `{ python = "molten" }`.
-    -- Takes precedence over `default_method`
-    never_run = { 'yaml' }, -- filetypes which are never sent to a code runner
-  },
 }
+
+vim.api.nvim_create_autocmd(
+    "BufWritePre", -- Note: Using BufWritePre instead of BufWritePost for Go
+    {
+        pattern = "*.go",
+        group = "AutoFormat",
+        callback = function()
+            vim.lsp.buf.format({ async = false })
+            -- Alternatively, if you prefer gofmt directly:
+            -- vim.cmd("silent !gofmt -w %")
+        end,
+    }
+)
+
+-- Rust
+require('lspconfig').rust_analyzer.setup {
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    settings = {
+        ['rust-analyzer'] = {
+            checkOnSave = {
+                command = "clippy",
+            },
+            procMacro = {
+                enable = true
+            },
+            cargo = {
+                allFeatures = true,
+            },
+        }
+    }
+}
+
+vim.api.nvim_create_autocmd(
+    "BufWritePre", -- Note: Using BufWritePre instead of BufWritePost for Rust
+    {
+        pattern = "*.rs",
+        group = "AutoFormat",
+        callback = function()
+            vim.lsp.buf.format({ async = false })
+            -- Alternatively, if you prefer rustfmt directly:
+            -- vim.cmd("silent !rustfmt %")
+        end,
+    }
+)
+
+-- Lua configuration
+require('lspconfig').lua_ls.setup {
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false, -- Disable third-party checking
+            },
+            telemetry = {
+                enable = false,
+            },
+            format = {
+                enable = true,
+                -- You can specify formatting options here if needed
+                defaultConfig = {
+                    indent_style = "space",
+                    indent_size = "2",
+                }
+            },
+        },
+    },
+}
+
+vim.api.nvim_create_autocmd(
+    "BufWritePre",
+    {
+        pattern = "*.lua",
+        group = "AutoFormat",
+        callback = function()
+            -- If you want to use the LSP formatter:
+            vim.lsp.buf.format({ async = false })
+
+            -- Alternatively, if you prefer stylua directly:
+            -- vim.cmd("silent !stylua %")
+        end,
+    }
+)

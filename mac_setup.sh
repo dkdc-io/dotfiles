@@ -17,6 +17,9 @@ brew install \
     btop \
     go \
     rust \
+    rust-analyzer \
+    lua-language-server \
+    stylua \
     node \ # ew # NOTE: might actually need node@22 :/
     yarn \ # ew
     just \
@@ -25,5 +28,10 @@ brew install \
 
 # npm nonsense
 npm install -g pyright # needed for extra things
+
+# go stuff
+go install golang.org/x/tools/gopls@latest
+
+# rust stuff
 
 # TODO: copy over dotfiles and whatnot
