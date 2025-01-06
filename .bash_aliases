@@ -41,7 +41,7 @@ alias t="tree -FC"
 alias tl="tree -L 1 -FC"
 alias tt="tree -L 2 -FC"
 alias ttt="tree -L 3 -FC"
-ls() {
+function ls() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         command ls -1GhFAtr "$@"
     else
@@ -122,7 +122,7 @@ alias on=". .venv/bin/activate"
 alias off="deactivate"
 
 # gitfucked
-gitfucked() {
+function gitfucked() {
     repo_name=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")
     if [ -z "$repo_name" ]; then
         echo "not in a git repository"
