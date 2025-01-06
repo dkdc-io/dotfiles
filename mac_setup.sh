@@ -17,6 +17,7 @@ brew install \
     btop \
     go \
     rust \
+    rustup \
     rust-analyzer \
     lua-language-server \
     stylua \
