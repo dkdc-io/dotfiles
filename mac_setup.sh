@@ -11,6 +11,7 @@ uv tool install ruff dkdc
 brew install \
     tree \
     gh \
+    jq \
     ripgrep \
     glow \
     scc \
