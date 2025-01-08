@@ -6,7 +6,12 @@
 #export PATH="/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin:$PATH" # code
 
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH" # homebrew stuff # TODO: linux?
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+else
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+fi
 
 export PATH="$HOME/go/bin:$PATH" # go stuff
 export PATH="$HOME/.cargo/bin:$PATH" # rust stuff
