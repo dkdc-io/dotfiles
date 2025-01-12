@@ -79,6 +79,9 @@ alias glow="glow -p"
 alias preview="glow"
 alias p="glow"
 
+## server things
+alias rsync="rsync -av --exclude-from='.gitignore'"
+
 # navigation
 alias ..="cd .."
 alias ...="cd ../.."

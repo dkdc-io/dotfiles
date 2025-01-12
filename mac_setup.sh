@@ -9,6 +9,7 @@ uv tool install ruff dkdc
 
 # install stuff
 brew install \
+    rectangle \ # TODO: double check name
     tree \
     gh \
     jq \
@@ -32,7 +33,7 @@ brew install \
 npm install -g pyright # needed for extra things
 
 # go stuff
-go install golang.org/x/tools/gopls@latest
+go install golang.org/x/tools/gopls@latest # go lsp
 
 # rust stuff
 
