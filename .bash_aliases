@@ -67,6 +67,7 @@ alias gp="git push"
 alias gpf="git push --force"
 alias gl="git log"
 alias gr="git rebase -i origin/main"
+alias git400="git config http.postBuffer 524288000"
 alias diff="git diff --color-words --no-index"
 alias grep='rg --hidden --glob "!.env" --glob "!.git"'
 alias g="grep"
