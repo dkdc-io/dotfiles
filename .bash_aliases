@@ -30,9 +30,11 @@ alias dkcd="dkdc"
 alias dk="dkdc"
 alias dc="dkdc"
 alias dkdcio="cd ~/code/dkdc-io"
+alias "dio"="dkdcio"
 
 # ascend
 alias ascendio="cd ~/code/ascend-io"
+alias aio="ascendio"
 
 # time savers 
 #alias vim="nvim"
