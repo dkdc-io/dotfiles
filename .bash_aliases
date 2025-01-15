@@ -72,6 +72,7 @@ alias diff="git diff --color-words --no-index"
 alias ghpra="gh pr list --state all"
 alias grep='rg --hidden --glob "!.env" --glob "!.git"'
 alias g="grep"
+alias gi="grep -i"
 alias top="btop"
 alias du="du -h -d1"
 alias loc="scc"
