@@ -15,6 +15,13 @@ fi
 
 export PATH="$HOME/go/bin:$PATH" # go stuff
 export PATH="$HOME/.cargo/bin:$PATH" # rust stuff
+  
+## newer work stuff
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/shims ]] && export PATH="$PYENV_ROOT/shims:$PATH"
+export PATH="$HOME/google-cloud-sdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
 
 # export other stuff
 export PYTHONDONTWRITEBYTECODE=1
@@ -35,6 +42,11 @@ alias "dio"="dkdcio"
 # ascend
 alias ascendio="cd ~/code/ascend-io"
 alias aio="ascendio"
+
+# mac
+alias down="cd ~/Downloads"
+alias desk="cd ~/Desktop"
+alias docs="cd ~/Documents"
 
 # time savers 
 #alias vim="nvim"
@@ -161,4 +173,7 @@ function excalidraw() {
     (cd ~/code/excalidraw && yarn start)
 }
 alias draw="excalidraw"
+
+
+# eval "$(pyenv init -sh)"
 

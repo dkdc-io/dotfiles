@@ -6,7 +6,8 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- colorscheme
-vim.cmd [[colorscheme tokyonight]]
+-- vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme github_dark_high_contrast]]
 
 -- typos
 vim.cmd("command! W w")
