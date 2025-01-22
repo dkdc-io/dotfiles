@@ -59,6 +59,7 @@ onboarding = "https://ascend-io.monday.com/boards/8159119882"
 figma = "https://www.figma.com/files/team/1306015839984154034"
 inception = "https://ascend-io.monday.com/boards/5622713154/views/161790999"
 expense = "https://www.expensify.com/inbox"
+fabric = "https://app.fabric.microsoft.com"
 
 ## misc
 mobilerouter = "http://192.168.8.1"
