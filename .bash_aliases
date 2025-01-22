@@ -43,6 +43,10 @@ alias "dio"="dkdcio"
 alias ascendio="cd ~/code/ascend-io"
 alias aio="ascendio"
 
+# other
+alias code="cd ~/code"
+alias data="cd ~/data"
+
 # mac
 alias down="cd ~/Downloads"
 alias desk="cd ~/Desktop"
@@ -138,7 +142,7 @@ alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_inst
 alias ipy="ipython"
 alias eda="ipy -i eda.py"
 
-alias di="uv pip install --upgrade neovim ipython ipykernel nbformat pip"
+alias di="uv pip install --upgrade ipython ipykernel nbformat"
 
 alias wp="which python"
 alias wp3="which python3"
