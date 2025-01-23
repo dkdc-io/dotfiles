@@ -37,7 +37,7 @@ alias dkcd="dkdc"
 alias dk="dkdc"
 alias dc="dkdc"
 alias dkdcio="cd ~/code/dkdc-io"
-alias "dio"="dkdcio"
+alias dio="dkdcio"
 
 # ascend
 alias ascendio="cd ~/code/ascend-io"
