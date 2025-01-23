@@ -21,6 +21,7 @@ router = "mobilerouter"
 a = "ascend"
 docs = "ascenddocs"
 app = "ascendapp"
+applocal = "ascendapplocal"
 
 [open.things]
 # websites
@@ -55,6 +56,7 @@ zulip = "/Applications/Zulip.app"
 ascend = "https://ascend.io"
 ascenddocs = "https://docs.ascend.io"
 ascendapp = "https://cody.app-dev.ascend.io"
+ascendapplocal = "https://instance.app.local.ascend.dev"
 onboarding = "https://ascend-io.monday.com/boards/8159119882"
 figma = "https://www.figma.com/files/team/1306015839984154034"
 inception = "https://ascend-io.monday.com/boards/5622713154/views/161790999"
