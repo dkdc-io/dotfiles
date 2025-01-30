@@ -224,3 +224,8 @@ vim.api.nvim_create_autocmd(
         end,
     }
 )
+
+-- copilot settings
+vim.g.copilot_filetypes = {
+    ["*"] = true, -- having trouble w/ .mdx files, doing this for now
+}
