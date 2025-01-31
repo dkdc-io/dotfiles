@@ -65,6 +65,8 @@ inception = "https://ascend-io.monday.com/boards/5622713154/views/161790999"
 expense = "https://www.expensify.com/inbox"
 fabric = "https://app.fabric.microsoft.com"
 miro = "https://miro.com/app/dashboard"
+ashby = "https://app.ashbyhq.com"
+inbox = "https://ascend-io.monday.com/boards/5622713154/views/162719659"
 
 ## misc
 mobilerouter = "http://192.168.8.1"
