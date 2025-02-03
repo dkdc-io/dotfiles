@@ -130,7 +130,7 @@ alias pfiles="cd ~/code/dkdc-io/public_files"
 alias product="cd ~/code/ascend-io/product"
 alias afiles="cd ~/code/ascend-io/product/website"
 alias cnotes="v ~/code/ascend-io/product/website/customer-meetings.md"
-alias drafts="cd ~/code/dkdc-io/files/drafts"
+alias drafts="cd ~/code/ascend-io/product/website/docs/drafts"
 alias todo="v ~/code/dkdc-io/files/todo.md"
 alias notes="v ~/code/dkdc-io/files/notes.md"
 
