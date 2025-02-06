@@ -50,6 +50,9 @@ untitled.ipynb
 target/
 dbt_packages/
 
+# ascend
+ascend-out
+
 # logs
 logs
 *snowsql*log*
