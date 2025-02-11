@@ -26,6 +26,7 @@ brew install \
     stylua \
     node \ # ew # NOTE: might actually need node@22 :/
     yarn \ # ew
+    ffmpeg \
     just \
     tmux \
     nvim
