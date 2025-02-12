@@ -33,6 +33,7 @@ brew install \
 
 # npm nonsense
 npm install -g pyright # needed for extra things
+npm install -g sql-language-server
 
 # go stuff
 go install golang.org/x/tools/gopls@latest # go lsp
