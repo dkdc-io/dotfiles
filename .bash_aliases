@@ -19,7 +19,7 @@ export PATH="$HOME/.cargo/bin:$PATH" # rust stuff
 ## newer work stuff
 export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/shims ]] && export PATH="$PYENV_ROOT/shims:$PATH"
+# [[ -d $PYENV_ROOT/shims ]] && export PATH="$PYENV_ROOT/shims:$PATH"
 export PATH="$HOME/google-cloud-sdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
 
@@ -131,6 +131,7 @@ alias product="cd ~/code/ascend-io/product"
 alias afiles="cd ~/code/ascend-io/product/website"
 alias cnotes="v ~/code/ascend-io/product/website/customer-meetings.md"
 alias drafts="cd ~/code/ascend-io/product/website/docs/drafts"
+alias pri="v ~/code/dkdc-io/files/pri.md"
 alias todo="v ~/code/dkdc-io/files/todo.md"
 alias notes="v ~/code/dkdc-io/files/notes.md"
 
