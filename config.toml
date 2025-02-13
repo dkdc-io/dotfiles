@@ -11,6 +11,7 @@ gh = "github"
 ym = "youtubemusic"
 io = "dkdcio"
 key = "keyboard"
+snow = "snowflake"
 read = "kindle"
 chat = "claude"
 music = "youtubemusic"
@@ -22,6 +23,7 @@ a = "ascend"
 docs = "ascenddocs"
 app = "ascendapp"
 applocal = "ascendapplocal"
+travel = "navan"
 
 [open.things]
 # websites
@@ -49,6 +51,7 @@ azure = "https://portal.azure.com"
 openai = "https://platform.openai.com/docs/overview"
 claude = "https://claude.ai"
 hetzner = "https://konsoleh.hetzner.com"
+snowflake = "https://app.snowflake.com"
 
 ## apps
 edge = "/Applications/Microsoft Edge.app"
@@ -67,6 +70,7 @@ fabric = "https://app.fabric.microsoft.com"
 miro = "https://miro.com/app/dashboard"
 ashby = "https://app.ashbyhq.com"
 inbox = "https://ascend-io.monday.com/boards/5622713154/views/162719659"
+navan = "https://app.navan.com"
 
 ## misc
 mobilerouter = "http://192.168.8.1"
