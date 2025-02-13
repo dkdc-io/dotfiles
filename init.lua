@@ -28,7 +28,6 @@ vim.keymap.set('n', '<C-o>', '<C-o>', { noremap = true, silent = true })
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, { noremap = true, silent = true })
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { noremap = true, silent = true })
 
-
 -- macos clipboard
 vim.opt.clipboard = 'unnamedplus'
 
