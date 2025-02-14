@@ -34,9 +34,7 @@ vim.opt.clipboard = 'unnamedplus'
 -- git stuff
 require('gitlinker').setup({
     opts = {
-        -- Include line numbers in the generated URL
         add_current_line_on_normal_mode = true,
-        -- Open URLs with your system's default browser
         action_callback = require('gitlinker.actions').open_in_browser,
     },
     -- Customize the mapping to your preference
