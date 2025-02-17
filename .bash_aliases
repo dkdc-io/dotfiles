@@ -64,6 +64,7 @@ alias t="tree -FC"
 alias tl="tree -L 1 -FC"
 alias tt="tree -L 2 -FC"
 alias ttt="tree -L 3 -FC"
+alias tttt="tree -L 4 -FC"
 function ls() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         command ls -1GhFAtr "$@"
