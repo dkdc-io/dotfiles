@@ -11,7 +11,6 @@ gh = "github"
 ym = "youtubemusic"
 io = "dkdcio"
 key = "keyboard"
-snow = "snowflake"
 read = "kindle"
 chat = "claude"
 music = "youtubemusic"
@@ -24,6 +23,8 @@ docs = "ascenddocs"
 app = "ascendapp"
 applocal = "ascendapplocal"
 travel = "navan"
+dbx = "databricks"
+snow = "snowflake"
 
 [open.things]
 # websites
@@ -44,18 +45,17 @@ reader = "https://read.readwise.io"
 kindle = "https://read.amazon.com"
 audible = "https://audible.com"
 
-##cloud
+## apps
+edge = "/Applications/Microsoft Edge.app"
+zulip = "/Applications/Zulip.app"
+
+## cloud/work
 aws = "https://us-east-2.console.aws.amazon.com/console"
 gcp = "https://console.cloud.google.com"
 azure = "https://portal.azure.com"
 openai = "https://platform.openai.com/docs/overview"
 claude = "https://claude.ai"
 hetzner = "https://konsoleh.hetzner.com"
-snowflake = "https://app.snowflake.com"
-
-## apps
-edge = "/Applications/Microsoft Edge.app"
-zulip = "/Applications/Zulip.app"
 
 ## work
 ascend = "https://ascend.io"
@@ -71,6 +71,11 @@ miro = "https://miro.com/app/dashboard"
 ashby = "https://app.ashbyhq.com"
 inbox = "https://ascend-io.monday.com/boards/5622713154/views/162719659"
 navan = "https://app.navan.com"
+snowflake = "https://app.snowflake.com"
+databricks = "https://dbc-386e5cd3-1860.cloud.databricks.com"
+
+product = "https://studious-adventure-8qowop4.pages.github.io"
+cnotes = "https://studious-adventure-8qowop4.pages.github.io/customer-meetings"
 
 ## misc
 mobilerouter = "http://192.168.8.1"

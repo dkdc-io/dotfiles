@@ -5,6 +5,17 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
+-- fancy todo list
+vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = vim.fn.expand("~/.codai/todo.md"),
+    callback = function()
+        --local output = vim.fn.system("echo 'vimtest' >> ~/.codai/todo.md")
+        local output = vim.fn.system("echo 'hello'")
+        vim.cmd('edit!')
+        vim.notify(output)
+    end
+})
+
 -- colorscheme
 -- vim.cmd [[colorscheme tokyonight]]
 vim.cmd [[colorscheme github_dark_high_contrast]]
