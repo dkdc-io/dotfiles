@@ -38,6 +38,7 @@ vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = tru
 vim.keymap.set('n', '<C-o>', '<C-o>', { noremap = true, silent = true })
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, { noremap = true, silent = true })
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gb', ':Git blame<CR>', { noremap = true, silent = true })
 
 -- macos clipboard
 vim.opt.clipboard = 'unnamedplus'
@@ -51,6 +52,19 @@ require('gitlinker').setup({
     -- Customize the mapping to your preference
     mappings = "<leader>gy" -- "\gy" to open in GitHub
 })
+
+-- git blame stuff
+function ToggleGitBlame()
+    if vim.b.gblame_buffer then
+        vim.cmd("bdelete! " .. vim.b.gblame_buffer)
+        vim.b.gblame_buffer = nil
+    else
+        vim.cmd("Git blame")
+        vim.b.gblame_buffer = vim.fn.bufnr('%')
+    end
+end
+
+vim.keymap.set('n', '<leader>gb', ToggleGitBlame, { noremap = true, silent = true })
 
 -- tree
 require("nvim-tree").setup({
