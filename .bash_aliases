@@ -39,6 +39,10 @@ alias dc="dkdc"
 alias dkdcio="cd ~/code/dkdc-io"
 alias dio="dkdcio"
 
+# codai
+alias codia="codai"
+alias ai="codai"
+
 # ascend
 alias ascendio="cd ~/code/ascend-io"
 alias aio="ascendio"
@@ -76,7 +80,6 @@ function ls() {
 }
 alias lsl="ls -l"
 alias gs="git status"
-alias gl="git log"
 alias gn="git checkout -b" 
 alias gm="git checkout main"
 alias gb="git branch" 
