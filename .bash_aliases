@@ -46,6 +46,8 @@ alias aio="ascendio"
 # other
 alias code="cd ~/code"
 alias data="cd ~/data"
+alias profiles="cd ~/profiles"
+alias secrets="cd ~/secrets"
 
 # mac
 alias down="cd ~/Downloads"
@@ -59,7 +61,7 @@ alias vt='v -c "T"'
 alias vi="nvim"
 alias m="tmux"
 alias l="less"
-alias tree="tree -I venv -I .git"
+alias tree="tree -I venv -I .git -I"
 alias t="tree -FC"
 alias tl="tree -L 1 -FC"
 alias tt="tree -L 2 -FC"
@@ -67,15 +69,16 @@ alias ttt="tree -L 3 -FC"
 alias tttt="tree -L 4 -FC"
 function ls() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        command ls -1GhFAtr "$@"
+        command ls -1GhFA "$@"
     else
-        command ls -1 --color=auto -hFAtr "$@"
+        command ls -1 --color=auto -hFA "$@"
     fi
 }
 alias lsl="ls -l"
 alias gs="git status"
 alias gl="git log"
 alias gn="git checkout -b" 
+alias gm="git checkout main"
 alias gb="git branch" 
 alias ga="git add ."
 alias gA="git add -A"
@@ -130,7 +133,7 @@ alias files="cd ~/code/dkdc-io/files"
 alias pfiles="cd ~/code/dkdc-io/public_files"
 alias product="cd ~/code/ascend-io/product"
 alias afiles="cd ~/code/ascend-io/product/website"
-alias cnotes="v ~/code/ascend-io/product/website/docs/customer-meetings.md"
+alias cnotes="v ~/code/ascend-io/product/website/docs/notes/customer-meetings.md"
 alias drafts="cd ~/code/ascend-io/product/website/docs/drafts"
 alias pri="v ~/code/dkdc-io/files/pri.md"
 alias todo="v ~/code/dkdc-io/files/todo.md"
@@ -184,4 +187,4 @@ function excalidraw() {
 alias draw="excalidraw"
 
 # eval "$(pyenv init -sh)"
-
+export PYTHONBREAKPOINT="IPython.embed"
