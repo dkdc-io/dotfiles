@@ -1,0 +1,5 @@
+#model = "openai:o3-mini"
+model = "anthropic:claude-3-7-sonnet-latest"
+#model = "google-vertex:gemini-2.0-pro-exp-02-05"
+#model = "openai:gpt-4o-mini"
+#model = "google-vertex:gemini-2.0-flash"
