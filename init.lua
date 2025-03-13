@@ -281,6 +281,7 @@ vim.g.copilot_filetypes = {
 vim.filetype.add({
     extension = {
         lock = "toml",
+        mdx = "markdown",
     },
     pattern = {
         [".*%.sql%.jinja"] = "sql",
