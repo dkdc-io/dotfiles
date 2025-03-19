@@ -16,6 +16,8 @@ venvs
 .venv
 .venvs
 
+# worktrees
+trees
 
 # tmp
 .tmp
