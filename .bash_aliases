@@ -52,6 +52,7 @@ alias code="cd ~/code"
 alias data="cd ~/data"
 alias profiles="cd ~/profiles"
 alias secrets="cd ~/secrets"
+alias vaults="cd ~/vaults"
 
 # mac
 alias down="cd ~/Downloads"
@@ -65,7 +66,9 @@ alias vt='v -c "T"'
 alias vi="nvim"
 alias m="tmux"
 alias l="less"
-alias tree="tree -I venv -I .git -I target"
+function tree() {
+  command tree -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+}
 alias t="tree -FC"
 alias tl="tree -L 1 -FC"
 alias tt="tree -L 2 -FC"
@@ -96,7 +99,9 @@ alias gr="git rebase -i origin/main"
 alias git400="git config http.postBuffer 524288000"
 alias diff="git diff --color-words --no-index"
 alias ghpra="gh pr list --state all"
-alias grep='rg --hidden --glob "!.env" --glob "!.git"'
+function grep() {
+  rg --hidden --glob "!.env" --glob "!.git" --glob "!dist" --glob "!target" --glob "!ascend-out" "$@"
+}
 alias g="grep"
 alias gi="grep -i"
 alias top="btop"
