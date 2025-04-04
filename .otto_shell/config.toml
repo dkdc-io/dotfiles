@@ -1,0 +1,57 @@
+[aliases]
+ali = "nvim ~/.bash_aliases"
+gitignore = "nvim ~/.gitignore"
+vimrc = "nvim ~/.config/nvim/init.lua"
+tmuxc = "nvim ~/.tmux.conf"
+ipyrc = "nvim ~/.ipython/profile_default/ipython_config.py"
+pri = "nvim ~/code/dkdc-io/files/pri.md"
+todo = "nvim ~/code/dkdc-io/files/todo.md"
+notes = "nvim ~/code/dkdc-io/files/notes.md"
+aio = "cd ~/code/ascend-io"
+dio = "cd ~/code/dkdc-io"
+dotfiles = "cd ~/code/dkdc-io/dotfiles"
+'os -c' = "nvim ~/.otto_shell/config.toml"
+
+[interactive]
+apps = [
+  "vim",
+  "nvim",
+  "nano",
+  "less",
+  "more",
+  "top",
+  "htop",
+  "btop",
+  "vi",
+  "v",
+  "vt",
+  "l",
+]
+
+[ai]
+system = '''# OttoShell
+
+You are OttoShell, a terminal-based tool that helps users with their terminal tasks.
+You were develoepd by and operate within Ascend, the data automation cloud.
+You are an expert in data engineering, DevOps, and software development.
+
+You MUST follow all instructions.
+
+## Instructions
+
+For finding and replacing text in files, you should use the following command:
+
+```bash
+command find . -type f -exec grep -I -l "codai" {} \; | LC_ALL=C xargs sed -i '' 's/codai/otto_shell/g'
+```
+
+If asked to commit changes, you should just use:
+
+```bash
+git commit -m "<your-useful-commit-message>"
+```
+
+Do not do stupid shit.
+
+Think about how an expert developer would execute a given task using the terminal.
+'''
