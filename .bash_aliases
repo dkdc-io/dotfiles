@@ -22,6 +22,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 # [[ -d $PYENV_ROOT/shims ]] && export PATH="$PYENV_ROOT/shims:$PATH"
 export PATH="$HOME/google-cloud-sdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
+export PATH="$HOME/code/ascend-io/source/bin:$PATH"
 
 # export other stuff
 export PYTHONDONTWRITEBYTECODE=1
@@ -30,50 +31,150 @@ export OLLAMA_HOME="$HOME/.ollama"
 # fine
 export EDITOR="nvim"
 
+# mroe work stuff
+kpr () 
+{ 
+    kubectl get pod -L ascend.io/runtime-id -L ascend.io/runtime-kind -L ascend.io/environment-id $@
+}
+
+kpro () 
+{ 
+    kubectl get pod -L ascend.io/runtime-id -L ascend.io/runtime-kind -L ascend.io/environment-id -n ottos-expeditions $@
+}
+
+fr () {
+  if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: fr <old_text> <new_text>"
+    return 1
+  fi
+  command find . -type f -exec grep -I -l "$1" {} \; | LC_ALL=C xargs sed -i '' 's/'"$1"'/'"$2"'/g'
+}
+
 # common typo
-alias dkcd="dkdc"
+function dkcd() {
+  dkdc "$@"
+}
 
 # dkdc
-alias dk="dkdc"
-alias dc="dkdc"
-alias dkdcio="cd ~/code/dkdc-io"
-alias dio="dkdcio"
+function dk() {
+  dkdc "$@"
+}
+
+function dc() {
+  dkdc "$@"
+}
+
+function dkdcio() {
+  cd ~/code/dkdc-io
+}
+
+function dio() {
+  dkdcio
+}
+
+# o
+function o() {
+  dkdc "$@"
+}
 
 # codai
-alias codia="codai"
-alias ai="codai"
+function codia() {
+  codai "$@"
+}
+
+function ai() {
+  codai "$@"
+}
 
 # ascend
-alias ascendio="cd ~/code/ascend-io"
-alias aio="ascendio"
+function ascendio() {
+  cd ~/code/ascend-io
+}
+
+function aio() {
+  ascendio
+}
 
 # other
-alias code="cd ~/code"
-alias data="cd ~/data"
-alias profiles="cd ~/profiles"
-alias secrets="cd ~/secrets"
-alias vaults="cd ~/vaults"
+#function code() {
+#  cd ~/code
+#}
+
+function data() {
+  cd ~/data
+}
+
+function profiles() {
+  cd ~/profiles
+}
+
+function secrets() {
+  cd ~/secrets
+}
+
+function vaults() {
+  cd ~/vaults
+}
 
 # mac
-alias down="cd ~/Downloads"
-alias desk="cd ~/Desktop"
-alias docs="cd ~/Documents"
+function down() {
+  cd ~/Downloads
+}
+
+function desk() {
+  cd ~/Desktop
+}
+
+function docs() {
+  cd ~/Documents
+}
 
 # time savers 
 #alias vim="nvim"
-alias v="nvim"
-alias vt='v -c "T"'
-alias vi="nvim"
-alias m="tmux"
-alias l="less"
-function tree() {
-  command tree -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+function v() {
+  nvim "$@"
 }
-alias t="tree -FC"
-alias tl="tree -L 1 -FC"
-alias tt="tree -L 2 -FC"
-alias ttt="tree -L 3 -FC"
-alias tttt="tree -L 4 -FC"
+
+function vt() {
+  v -c "T" "$@"
+}
+
+function vi() {
+  nvim "$@"
+}
+
+function m() {
+  tmux "$@"
+}
+
+function l() {
+  less "$@"
+}
+
+function tree() {
+  command tree -F -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+}
+
+function t() {
+  command tree -F -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+}
+
+function tl() {
+  command tree -L 1 -F -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+}
+
+function tt() {
+  command tree -L 2 -F -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+}
+
+function ttt() {
+  command tree -L 3 -F -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+}
+
+function tttt() {
+  command tree -L 4 -F -I venv -I .git -I target -I dist -I target -I ascend-out "$@"
+}
+
 function ls() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         command ls -1GhFA "$@"
@@ -81,48 +182,146 @@ function ls() {
         command ls -1 --color=auto -hFA "$@"
     fi
 }
-alias lsl="ls -l"
-alias gs="git status"
-alias gw="git switch"
-alias gn="git switch -c" 
-alias gm="git switch main"
-alias gb="git branch" 
-alias ga="git add ."
-alias gA="git add -A"
-alias qs="git add . && git commit -m 'qs'"
-alias ss="qs"
-alias gc="git commit -m"
-alias gp="git push"
-alias gpf="git push --force"
-alias gl="git log"
-alias gr="git rebase -i origin/main"
-alias git400="git config http.postBuffer 524288000"
-alias diff="git diff --color-words --no-index"
-alias ghpra="gh pr list --state all"
+
+function lsl() {
+  ls -l "$@"
+}
+
+function gs() {
+  git status "$@"
+}
+
+function gw() {
+  git switch "$@"
+}
+
+function gn() {
+  git switch -c "$@"
+}
+
+function gm() {
+  git switch main
+}
+
+function gb() {
+  git branch "$@"
+}
+
+function ga() {
+  git add .
+}
+
+function gA() {
+  git add -A
+}
+
+function qs() {
+  git add . && git commit -m 'qs'
+}
+
+function ss() {
+  qs
+}
+
+function gc() {
+  git commit -m "$@"
+}
+
+function gp() {
+  git push "$@"
+}
+
+function gpf() {
+  git push --force "$@"
+}
+
+function gl() {
+  git log "$@"
+}
+
+function gr() {
+  git rebase -i origin/main "$@"
+}
+
+function git400() {
+  git config http.postBuffer 524288000
+}
+
+function diff() {
+  git diff --color-words --no-index "$@"
+}
+
+function ghpra() {
+  gh pr list --state all "$@"
+}
+
 function grep() {
   rg --hidden --glob "!.env" --glob "!.git" --glob "!dist" --glob "!target" --glob "!ascend-out" "$@"
 }
-alias g="grep"
-alias gi="grep -i"
-alias top="btop"
-alias du="du -h -d1"
-alias loc="scc"
-alias find="find . -name"
-alias f="find"
-alias glow="glow -p"
-alias preview="glow"
-alias p="glow"
+
+function g() {
+  grep "$@"
+}
+
+function gi() {
+  grep -i "$@"
+}
+
+function top() {
+  btop "$@"
+}
+
+function du() {
+  command du -h -d1 "$@"
+}
+
+function loc() {
+  scc "$@"
+}
+
+function find() {
+  command find . -name "$@"
+}
+
+function f() {
+  find "$@"
+}
+
+function glow() {
+  command glow -p "$@"
+}
+
+function preview() {
+  glow "$@"
+}
+
+function p() {
+  glow "$@"
+}
 
 ## server things
-alias rsync="rsync -av --exclude-from='.gitignore'"
+function rsync() {
+  command rsync -av --exclude-from='.gitignore' "$@"
+}
 
 # navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
+function ..() {
+  cd ..
+}
+
+function ...() {
+  cd ../..
+}
+
+function ....() {
+  cd ../../..
+}
 
 # quick mafs 
-alias ali="v ~/.bash_aliases"
+function ali() {
+  v ~/.bash_aliases
+}
+
 update() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         . ~/.zprofile
@@ -131,42 +330,111 @@ update() {
     fi
     git config --global core.excludesfile ~/.gitignore
 }
-alias gitignore="v ~/.gitignore"
-alias vimrc="v ~/.config/nvim/init.lua"
-alias tmuxc="v ~/.tmux.conf"
-alias ipyrc="v ~/.ipython/profile_default/ipython_config.py"
+
+function gitignore() {
+  v ~/.gitignore
+}
+
+function vimrc() {
+  v ~/.config/nvim/init.lua
+}
+
+function tmuxc() {
+  v ~/.tmux.conf
+}
+
+function ipyrc() {
+  v ~/.ipython/profile_default/ipython_config.py
+}
 
 # work
-alias dotfiles="cd ~/code/dkdc-io/dotfiles"
-alias files="cd ~/code/dkdc-io/files"
-alias pfiles="cd ~/code/dkdc-io/public_files"
-alias product="cd ~/code/ascend-io/product"
-alias afiles="cd ~/code/ascend-io/product/website"
-alias cnotes="v ~/code/ascend-io/product/website/docs/notes/customer-meetings.md"
-alias drafts="cd ~/code/ascend-io/product/website/docs/drafts"
-alias pri="v ~/code/dkdc-io/files/pri.md"
-alias todo="v ~/code/dkdc-io/files/todo.md"
-alias notes="v ~/code/dkdc-io/files/notes.md"
+function dotfiles() {
+  cd ~/code/dkdc-io/dotfiles
+}
+
+function files() {
+  cd ~/code/dkdc-io/files
+}
+
+function pfiles() {
+  cd ~/code/dkdc-io/public_files
+}
+
+function product() {
+  cd ~/code/ascend-io/product
+}
+
+function afiles() {
+  cd ~/code/ascend-io/product/website
+}
+
+function cnotes() {
+  v ~/code/ascend-io/product/website/docs/notes/customer-meetings.md
+}
+
+function drafts() {
+  cd ~/code/ascend-io/product/website/docs/drafts
+}
+
+function pri() {
+  v ~/code/dkdc-io/files/pri.md
+}
+
+function todo() {
+  v ~/code/dkdc-io/files/todo.md
+}
+
+function notes() {
+  v ~/code/dkdc-io/files/notes.md
+}
 
 # etc
-alias temp="v temp.md"
+function temp() {
+  v temp.md
+}
 
 # python stuff
 #alias python="python3"
 #alias pip="pip3"
-alias ipython="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-alias ipy="ipython"
-alias eda="ipy -i eda.py"
-alias dev="ipy -i dev.py"
+function ipython() {
+  python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'
+}
 
-alias di="uv pip install --upgrade ipython ipykernel nbformat"
+function ipy() {
+  python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'
+}
 
-alias wp="which python"
-alias wp3="which python3"
+function eda() {
+  python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()' -i eda.py
+}
 
-alias venv="uv venv"
-alias on=". .venv/bin/activate"
-alias off="deactivate"
+function dev() {
+  python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()' -i dev.py
+}
+
+function di() {
+  uv pip install --upgrade ipython ipykernel nbformat
+}
+
+function wp() {
+  which python
+}
+
+function wp3() {
+  which python3
+}
+
+function venv() {
+  uv venv "$@"
+}
+
+function on() {
+  . .venv/bin/activate
+}
+
+function off() {
+  deactivate
+}
 
 # gitfucked
 function gitfucked() {
@@ -193,7 +461,17 @@ function gitfucked() {
 function excalidraw() {
     (cd ~/code/excalidraw && yarn start)
 }
-alias draw="excalidraw"
+
+function draw() {
+  excalidraw
+}
 
 # eval "$(pyenv init -sh)"
 export PYTHONBREAKPOINT="IPython.embed"
+export GH_TOKEN=$(gh auth token)
+
+autoload -Uz compinit
+compinit
+
+source <(kubectl completion zsh)
+source <(gobi completion zsh)
