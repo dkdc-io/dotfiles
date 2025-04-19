@@ -32,6 +32,54 @@ export OLLAMA_HOME="$HOME/.ollama"
 export EDITOR="nvim"
 
 # mroe work stuff
+ghprc() {
+  local repo="${1:-}"
+  local pr_number="${2:-}"
+  local org="ascend-io"
+
+  # Derive missing arguments with gh
+  if [[ -z "$repo" ]]; then
+    repo=$(gh repo view --json name --jq '.name' 2>/dev/null) || repo=""
+  fi
+  if [[ -z "$pr_number" ]]; then
+    pr_number=$(gh pr view --json number --jq '.number' 2>/dev/null) || pr_number=""
+  fi
+
+  # Validate
+  if [[ -z "$repo" ]]; then
+    echo "Error: repo not specified and could not determine current repository." >&2
+    return 1
+  fi
+  if [[ -z "$pr_number" ]]; then
+    echo "Error: PR number not specified and could not determine current pull request." >&2
+    return 1
+  fi
+
+  gh api --paginate -H "Accept: application/vnd.github+json" \
+        "/repos/${org}/${repo}/pulls/${pr_number}/comments" |
+    jq -r '
+      .[] |
+      "Reviewer: \(.user.login)
+File:     \(.path) (line \(.line // "N/A"))
+Diff:
+\(.diff_hunk)
+Comment:
+\(.body)
+-------------------------------------------------------------------------------"
+    '
+}
+
+taskit() {
+    echo "# PR description" > task.md
+    gh pr view >> task.md
+    echo "# PR comments" >> task.md
+    gh pr view -c >> task.md
+    echo "# PR diff" >> task.md
+    gh pr diff >> task.md
+    echo "# PR review comments" >> task.md
+    ghprc >> task.md
+}
+
 kpr () 
 { 
     kubectl get pod -L ascend.io/runtime-id -L ascend.io/runtime-kind -L ascend.io/environment-id $@
@@ -49,6 +97,11 @@ fr () {
   fi
   command find . -type f -exec grep -I -l "$1" {} \; | LC_ALL=C xargs sed -i '' 's/'"$1"'/'"$2"'/g'
 }
+
+sshws () {
+    kubectl exec -it -n ottos-expeditions runtime-knpy22-0195ea33-bbfd-7822-9617-387f088301fb -- /bin/bash
+}
+
 
 # common typo
 function dkcd() {
@@ -83,7 +136,7 @@ function codia() {
 }
 
 function ai() {
-  codai "$@"
+  codex --full-auto "$@"
 }
 
 # ascend
