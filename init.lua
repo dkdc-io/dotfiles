@@ -196,12 +196,6 @@ require('lspconfig').rust_analyzer.setup {
             checkOnSave = {
                 command = "clippy",
             },
-            procMacro = {
-                enable = true
-            },
-            cargo = {
-                allFeatures = true,
-            },
         }
     }
 }
@@ -272,6 +266,19 @@ require('lspconfig').sqlls.setup {
     capabilities = vim.lsp.protocol.make_client_capabilities(),
 }
 
+-- TOML
+vim.api.nvim_create_autocmd(
+    "BufWritePost",
+    {
+        pattern = "*.toml",
+        group = "AutoFormat",
+        callback = function()
+            vim.cmd("silent !taplo fmt %")
+            vim.cmd("edit")
+        end,
+    }
+)
+
 -- copilot settings
 vim.g.copilot_filetypes = {
     ["*"] = true, -- having trouble w/ .mdx files, doing this for now
@@ -286,4 +293,15 @@ vim.filetype.add({
     pattern = {
         [".*%.sql%.jinja"] = "sql",
     }
+})
+
+-- spell check
+vim.api.nvim_create_augroup("MarkdownSpell", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    group = "MarkdownSpell",
+    pattern = { "markdown", "text" },
+    callback = function()
+        vim.opt_local.spell = true
+        vim.opt_local.spelllang = "en_us"
+    end,
 })
