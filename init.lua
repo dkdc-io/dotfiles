@@ -5,7 +5,31 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
--- fancy todo list
+-- auto‑reload file when it’s changed outside of Neovim
+vim.opt.autoread = true
+
+-- fire CursorHold more quickly (default is 4s)
+vim.opt.updatetime = 100  -- milliseconds
+
+-- on these events, check the file’s timestamp and reload if needed
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+augroup("AutoRead", { clear = true })
+autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI", "InsertLeave" }, {
+  group = "AutoRead",
+  pattern = "*",
+  command = "silent! checktime",
+})
+autocmd("FileChangedShellPost", {
+  group = "AutoRead",
+  pattern = "*",
+  callback = function()
+    vim.notify("File changed on disk. Buffer reloaded", vim.log.levels.INFO)
+  end,
+})
+
+-- fancy todo list (unused)
 vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = vim.fn.expand("~/.codai/todo.md"),
     callback = function()
@@ -305,3 +329,28 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.spelllang = "en_us"
     end,
 })
+
+-- YAML
+-- To enable formatting, install the YAML language server:
+--   npm install -g yaml-language-server
+require('lspconfig').yamlls.setup {
+    settings = {
+        yaml = {
+            format = { enable = true },
+            validate = true,
+            -- you can add schemas here, e.g.:
+            -- schemas = { kubernetes = "/path/to/k8s/*.json" },
+        },
+    },
+}
+
+vim.api.nvim_create_autocmd(
+    "BufWritePre",
+    {
+        pattern = { "*.yaml", "*.yml" },
+        group = "AutoFormat",
+        callback = function()
+            vim.lsp.buf.format({ async = false })
+        end,
+    }
+)
