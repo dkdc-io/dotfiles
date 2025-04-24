@@ -32,7 +32,7 @@ export OLLAMA_HOME="$HOME/.ollama"
 export EDITOR="nvim"
 
 # mroe work stuff
-ghprc() {
+function ghprc() {
   local repo="${1:-}"
   local pr_number="${2:-}"
   local org="ascend-io"
@@ -69,7 +69,7 @@ Comment:
     '
 }
 
-taskit() {
+function taskit() {
     echo "# PR description" > task.md
     gh pr view >> task.md
     echo "# PR comments" >> task.md
@@ -80,17 +80,17 @@ taskit() {
     ghprc >> task.md
 }
 
-kpr () 
+function kpr () 
 { 
     kubectl get pod -L ascend.io/runtime-id -L ascend.io/runtime-kind -L ascend.io/environment-id $@
 }
 
-kpro () 
+function kpro () 
 { 
     kubectl get pod -L ascend.io/runtime-id -L ascend.io/runtime-kind -L ascend.io/environment-id -n ottos-expeditions $@
 }
 
-fr () {
+function fr () {
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "Usage: fr <old_text> <new_text>"
     return 1
@@ -98,10 +98,17 @@ fr () {
   command find . -type f -exec grep -I -l "$1" {} \; | LC_ALL=C xargs sed -i '' 's/'"$1"'/'"$2"'/g'
 }
 
-sshws () {
+function sshws () {
     kubectl exec -it -n ottos-expeditions runtime-knpy22-0195ea33-bbfd-7822-9617-387f088301fb -- /bin/bash
 }
 
+function website () {
+    cd $HOME/code/dkdc-io/dkdc.dev
+}
+
+function posts () {
+    cd $HOME/code/dkdc-io/dkdc.dev/content/posts
+}
 
 # common typo
 function dkcd() {
@@ -130,13 +137,17 @@ function o() {
   dkdc "$@"
 }
 
-# codai
-function codia() {
-  codai "$@"
-}
-
+# ai
 function ai() {
   codex --full-auto "$@"
+}
+
+function ait() {
+  codex --full-auto "$@" "open up task.md and work on the task"
+}
+
+function aii() {
+    codex "$@"
 }
 
 # ascend
@@ -309,7 +320,7 @@ function ghpra() {
 }
 
 function grep() {
-  rg --hidden --glob "!.env" --glob "!.git" --glob "!dist" --glob "!target" --glob "!ascend-out" "$@"
+  rg --hidden --glob "!public" --glob "!.env" --glob "!.git" --glob "!dist" --glob "!target" --glob "!ascend-out" "$@"
 }
 
 function g() {
@@ -375,7 +386,7 @@ function ali() {
   v ~/.bash_aliases
 }
 
-update() {
+function update() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         . ~/.zprofile
     else
