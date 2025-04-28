@@ -106,8 +106,20 @@ function website () {
     cd $HOME/code/dkdc-io/dkdc.dev
 }
 
+function dkdc.dev () {
+    website
+}
+
 function posts () {
     cd $HOME/code/dkdc-io/dkdc.dev/content/posts
+}
+
+function drafts () {
+    grep ".*draft.*true.*" "$@"
+}
+
+function todos () {
+    grep -i "TODO" "$@"
 }
 
 # common typo
@@ -138,14 +150,35 @@ function o() {
 }
 
 # ai
+## default
 function ai() {
   codex --full-auto "$@"
 }
 
-function ait() {
-  codex --full-auto "$@" "open up task.md and work on the task"
+function aia() {
+  ai -p openai -m o4-mini "$@"
 }
 
+function aig() {
+  ai -p gemini -m gemini-2.5-pro-preview-03-25 "$@"
+}
+
+## work on task
+function ait() {
+  ai "open up task.md and work on the task"
+}
+
+## no sandbox (not working as expected)
+function aid() {
+  ai --dangerously-auto-approve-everything "$@"
+}
+
+## work on task (no sandboxing)
+function aidt() {
+  aid "$@" "open up task.md and work on the task"
+}
+
+## ask to approve anything
 function aii() {
     codex "$@"
 }
@@ -436,9 +469,9 @@ function cnotes() {
   v ~/code/ascend-io/product/website/docs/notes/customer-meetings.md
 }
 
-function drafts() {
-  cd ~/code/ascend-io/product/website/docs/drafts
-}
+# function drafts() {
+#   cd ~/code/ascend-io/product/website/docs/drafts
+# }
 
 function pri() {
   v ~/code/dkdc-io/files/pri.md
@@ -528,6 +561,94 @@ function excalidraw() {
 
 function draw() {
   excalidraw
+}
+
+function mp4() {
+    local input_file="$1"
+    local output_file="$2"
+    
+    # Check if input file is provided
+    if [ -z "$input_file" ]; then
+        echo "Error: Input file is required"
+        echo "Usage: mp4 input_file [output_file]"
+        return 1
+    fi
+    
+    # If output file not provided, use input name with .mp4 extension
+    if [ -z "$output_file" ]; then
+        # Get base name of input file without extension
+        local base_name="${input_file%.*}"
+        output_file="${base_name}.mp4"
+    fi
+    
+    echo "Converting $input_file to $output_file..."
+    ffmpeg -i "$input_file" -c:v libsvtav1 -crf 30 -preset 8 -c:a aac -movflags +faststart "$output_file"
+    
+    # Check if conversion was successful
+    if [ $? -eq 0 ]; then
+        echo "Conversion completed successfully"
+        return 0
+    else
+        echo "Conversion failed"
+        return 1
+    fi
+}
+
+function gif() {
+    local input_file="$1"
+    local output_file="$2"
+    
+    # Set up colors for interactive terminals
+    if [ -t 1 ]; then
+        yellow="\033[1;33m"
+        red="\033[1;31m"
+        cyan="\033[1;36m"
+        reset="\033[0m"
+    else
+        yellow=""
+        red=""
+        cyan=""
+        reset=""
+    fi
+    
+    # Display help if no input file provided
+    if [ -z "$input_file" ]; then
+        echo -e "${yellow}Error: Input file is required${reset}" >&2
+        echo -e "Easily convert a video to a gif using ffmpeg. This will optimize the color palette to" >&2
+        echo -e "keep it looking good, and drop the framerate to 10fps to keep the file size down." >&2
+        echo -e "${yellow}Usage: gif input_file [output_file]${reset}" >&2
+        return 1
+    fi
+    
+    # If output file not provided, use input name with .gif extension
+    if [ -z "$output_file" ]; then
+        # Get base name of input file without extension
+        local base_name="${input_file%.*}"
+        output_file="${base_name}.gif"
+    fi
+    
+    # Ensure the input file exists
+    if [ ! -f "$input_file" ]; then
+        echo -e "${red}Error: Input file does not exist ${cyan}'$input_file'${reset}" >&2
+        echo -e "${yellow}Usage: gif input_file [output_file]${reset}" >&2
+        return 1
+    fi
+    
+    echo "Converting $input_file to $output_file..."
+    ffmpeg -i "$input_file" \
+        -filter_complex "[0:v] fps=10,scale=640:-1:flags=lanczos,palettegen [p]; \
+        [0:v] fps=10,scale=640:-1:flags=lanczos [x]; \
+        [x][p] paletteuse" \
+        "$output_file"
+    
+    # Check if conversion was successful
+    if [ $? -eq 0 ]; then
+        echo "Conversion completed successfully"
+        return 0
+    else
+        echo "Conversion failed"
+        return 1
+    fi
 }
 
 # eval "$(pyenv init -sh)"
