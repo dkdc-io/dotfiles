@@ -70,13 +70,13 @@ Comment:
 }
 
 function taskit() {
-    echo "# PR description" > task.md
+    echo "# PR description\n" > task.md
     gh pr view >> task.md
-    echo "# PR comments" >> task.md
+    echo "# PR comments\n" >> task.md
     gh pr view -c >> task.md
-    echo "# PR diff" >> task.md
+    echo "# PR diff\n" >> task.md
     gh pr diff >> task.md
-    echo "# PR review comments" >> task.md
+    echo "# PR review comments\n" >> task.md
     ghprc >> task.md
 }
 
@@ -152,7 +152,7 @@ function o() {
 # ai
 ## default
 function ai() {
-  codex --full-auto "$@"
+  codex --full-auto "$@" --project-doc ai.md
 }
 
 function aia() {
