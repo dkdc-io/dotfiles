@@ -9,25 +9,18 @@ vim.opt.shiftwidth = 4
 vim.opt.autoread = true
 
 -- fire CursorHold more quickly (default is 4s)
-vim.opt.updatetime = 100  -- milliseconds
+vim.opt.updatetime = 200
 
 -- on these events, check the file’s timestamp and reload if needed
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-
-augroup("AutoRead", { clear = true })
-autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI", "InsertLeave" }, {
-  group = "AutoRead",
-  pattern = "*",
-  command = "silent! checktime",
-})
-autocmd("FileChangedShellPost", {
-  group = "AutoRead",
-  pattern = "*",
-  callback = function()
-    vim.notify("File changed on disk. Buffer reloaded", vim.log.levels.INFO)
-  end,
-})
+vim.api.nvim_create_augroup("AutoRead", { clear = true })
+vim.api.nvim_create_autocmd(
+    { "FocusGained", "BufEnter", "CursorHold" },
+    {
+        group = "AutoRead",
+        pattern = "*",
+        command = "checktime"
+    }
+)
 
 -- fancy todo list (unused)
 vim.api.nvim_create_autocmd("BufWritePost", {
