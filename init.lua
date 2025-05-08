@@ -172,6 +172,7 @@ vim.api.nvim_create_autocmd(
         pattern = "*.py",
         group = "AutoFormat",
         callback = function()
+            vim.cmd("silent !ruff check --select I --fix %")
             vim.cmd("silent !ruff format %")
             vim.cmd("edit")
         end,
