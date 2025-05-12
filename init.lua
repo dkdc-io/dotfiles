@@ -348,3 +348,41 @@ vim.api.nvim_create_autocmd(
         end,
     }
 )
+
+-- TypeScript/JavaScript
+-- To enable formatting and linting, install:
+--   npm install -g typescript typescript-language-server prettier eslint
+require('lspconfig').tsserver.setup {
+    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    settings = {
+        typescript = {
+            format = {
+                indentSize = 2,
+                convertTabsToSpaces = true,
+                tabSize = 2,
+            },
+        },
+        javascript = {
+            format = {
+                indentSize = 2,
+                convertTabsToSpaces = true,
+                tabSize = 2,
+            },
+        },
+    },
+}
+
+vim.api.nvim_create_autocmd(
+    "BufWritePre",
+    {
+        pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+        group = "AutoFormat",
+        callback = function()
+            -- Using LSP formatter
+            vim.lsp.buf.format({ async = false })
+
+            -- Alternatively, using Prettier directly:
+            -- vim.cmd("silent !prettier --write %")
+        end,
+    }
+)
